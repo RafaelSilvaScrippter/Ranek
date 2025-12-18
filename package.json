@@ -1,0 +1,20 @@
+{
+  "name": "ranek",
+  "version": "1.0.0",
+  "description": "Ecommerce",
+  "homepage": "https://github.com/RafaelSilvaScrippter/Ranek#readme",
+  "bugs": {
+    "url": "https://github.com/RafaelSilvaScrippter/Ranek/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RafaelSilvaScrippter/Ranek.git"
+  },
+  "license": "ISC",
+  "author": "Rafa Silva",
+  "type": "module",
+  "main": "./ts/script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
