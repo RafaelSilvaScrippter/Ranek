@@ -1,0 +1,48 @@
+.card-item-produto {
+  box-shadow: 0 2px 4px rgba(30, 60, 90, 0.1);
+  padding: 1.2rem 1.4rem;
+  border-radius: 12px;
+}
+
+.card-item-produto img {
+  border-radius: 12px;
+}
+
+.main-produtos {
+  max-width: 1300px;
+  padding: 1.25rem 2rem;
+
+  margin: 3rem auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header-card {
+  margin: 0.75rem 0;
+}
+
+.preco-card {
+  color: #ee8800;
+  margin-bottom: 0.2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.nome-card,
+.descricao-card {
+  color: #334455;
+}
+
+@media (max-width: 800px) {
+  .main-produtos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .main-produtos {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
