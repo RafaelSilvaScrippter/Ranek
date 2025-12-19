@@ -41,3 +41,14 @@
     flex-direction: column-reverse;
   }
 }
+
+.comprar-btn a {
+  color: #f7f7f7 !important;
+  padding: 1rem 2.5rem;
+}
+
+.comprar-btn {
+  text-transform: uppercase;
+  display: inline-block;
+  margin-top: 2.75rem;
+}

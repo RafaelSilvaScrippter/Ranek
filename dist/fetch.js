@@ -1,3 +1,4 @@
+import { abrirFormulario } from "./formularioCompra.js";
 const dataMain = document.querySelector("[data-main-produtos]");
 const dataMainProduto = document.querySelector("[data-produto-unico]");
 export async function fetchDados(url) {
@@ -46,9 +47,22 @@ export async function getProduto() {
           <h2 class="nome-card">${dados.nome}</h2>
         </div>
         <p class="descricao-card">${dados.descricao}</p>
+        <div data-btn-comprar class="btn-principal comprar-btn">
+          <a href="#" >Comprar</a>
+        </div>
+        <div data-append-formulario>
+        <h2 data-titulo-envio class='titulo-envio'>Endereço de Envio</h2>
+        <div>
       </div>
     </div>
     `;
+        if (dataMainProduto instanceof HTMLElement) {
+            const objetoElementos = {
+                btn: dataMainProduto.querySelector("[data-btn-comprar]"),
+                appendForm: dataMainProduto.querySelector("[data-append-formulario]"),
+            };
+            abrirFormulario(objetoElementos);
+        }
     }
 }
 getProduto();
