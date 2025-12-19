@@ -32,6 +32,9 @@ export function abrirFormulario(elements) {
         criarFormulario(elements);
     const formularioAbrir = elements?.appendForm?.querySelector("[data-formulario-comprar]");
     const tituloEnvio = elements?.appendForm?.querySelector("[data-titulo-envio]");
+    const dataMain = document.querySelector("[data-produto-unico]");
+    const stick = dataMain?.querySelector("[data-div-stick]");
+    console.log(stick);
     formularioAbrir?.classList.add("fechado");
     elements?.btn?.addEventListener("click", () => {
         formularioAbrir?.classList.remove("fechado");
@@ -39,6 +42,7 @@ export function abrirFormulario(elements) {
             elements.btn.classList.add("none");
             tituloEnvio?.classList.add("ativo");
         }
+        stick?.classList.remove("stick");
     });
 }
 //# sourceMappingURL=formularioCompra.js.map

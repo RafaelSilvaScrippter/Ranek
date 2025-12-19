@@ -40,3 +40,8 @@
 .titulo-envio.ativo {
   display: block;
 }
+
+.stick {
+  position: sticky;
+  top: 0px;
+}

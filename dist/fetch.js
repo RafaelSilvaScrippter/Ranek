@@ -42,13 +42,15 @@ export async function getProduto() {
       <img src='${dados.fotos[1]?.src}' title='${dados.fotos[1]?.titulo}'/>
       </div>
       <div class="conteudo-produto">
-        <div class="header-card">
-          <p class="preco-card">R$ ${dados.preco}</p>  
-          <h2 class="nome-card">${dados.nome}</h2>
-        </div>
-        <p class="descricao-card">${dados.descricao}</p>
-        <div data-btn-comprar class="btn-principal comprar-btn">
-          <a href="#" >Comprar</a>
+        <div data-div-stick class='stick'>
+          <div class="header-card">
+            <p class="preco-card">R$ ${dados.preco}</p>  
+            <h2 class="nome-card">${dados.nome}</h2>
+          </div>
+          <p class="descricao-card">${dados.descricao}</p>
+          <div data-btn-comprar class="btn-principal comprar-btn">
+            <a href="#" >Comprar</a>
+          </div>
         </div>
         <div data-append-formulario>
         <h2 data-titulo-envio class='titulo-envio'>Endereço de Envio</h2>
