@@ -34,12 +34,17 @@ const getParams = new URLSearchParams(window.location.search)
 console.log(getParams);
 export async function getProduto() {
     const dados = await fetchDados(`https://ranekapi.origamid.dev/json/api/produto/${getParams}`);
+    console.log(dados);
     if (dados && dataMainProduto) {
         dataMainProduto.innerHTML = `
     <div class="div-produto-container">
       <div>
       <img src='${dados.fotos[0].src}' title='${dados.fotos[0].titulo}'/>
-      <img src='${dados.fotos[1]?.src}' title='${dados.fotos[1]?.titulo}'/>
+      ${dados.fotos[1]
+            ? `
+          <img src="${dados.fotos[1]?.src}" title="${dados.fotos[1]?.titulo}" />
+          `
+            : ""}
       </div>
       <div class="conteudo-produto">
         <div data-div-stick class='stick'>
