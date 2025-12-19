@@ -1,0 +1,42 @@
+.formulario {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: center;
+  gap: 1.8rem;
+  margin-top: 3rem;
+}
+
+.formulario.fechado {
+  display: none;
+}
+
+.formulario label {
+  font-size: 1.2rem;
+  color: #334455;
+}
+
+.formulario input {
+  padding: 0.9rem 1.6rem;
+  border: none;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(30, 60, 90, 0.1);
+}
+
+[data-btn-comprar] {
+  cursor: pointer;
+}
+
+[data-btn-comprar].none {
+  display: none;
+}
+
+.titulo-envio {
+  display: none;
+  color: #334455;
+  margin-top: 2.5rem;
+  font-size: 1.7rem;
+}
+
+.titulo-envio.ativo {
+  display: block;
+}
