@@ -1,8 +1,8 @@
 import { abrirFormulario } from "./formularioCompra.js";
 const dataMain = document.querySelector("[data-main-produtos]");
 const dataMainProduto = document.querySelector("[data-produto-unico]");
-export async function fetchDados(url) {
-    const response = await fetch(url);
+export async function fetchDados(url, obj) {
+    const response = await fetch(url, obj);
     const dados = await response.json();
     return dados;
 }

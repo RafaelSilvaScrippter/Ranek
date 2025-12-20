@@ -21,7 +21,14 @@
   flex-direction: column;
 }
 
+button {
+  border: none;
+}
+
 .main-login form {
+  display: grid;
+  max-width: 100%;
+  width: 60vw;
   margin-top: 2rem;
 }
 
@@ -29,7 +36,7 @@
   margin-bottom: 2rem;
 }
 
-.btn-login {
+form .btn-login {
   border: none;
   cursor: pointer;
   width: 20vw;
@@ -58,4 +65,12 @@
   display: grid;
   margin-top: 2rem;
   justify-content: center;
+}
+
+.erro-message {
+  color: #e80;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.975rem;
+  margin-top: 1.2rem;
+  text-align: center;
 }
