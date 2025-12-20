@@ -51,9 +51,9 @@ export async function mostarDados() {
 const getParams = new URLSearchParams(window.location.search)
   .get("produto")
   ?.replace(".html", "");
-console.log(getParams);
 
 export async function getProduto() {
+  if (!getParams) return;
   const dados = await fetchDados<InterfaceProdutos>(
     `https://ranekapi.origamid.dev/json/api/produto/${getParams}`
   );
