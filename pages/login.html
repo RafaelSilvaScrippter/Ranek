@@ -22,13 +22,14 @@
       <h1 class="login-title">
         Login
       </h1>
-      <form data-login method="post">
+      <form type="submit" data-login method="post">
         <label for="email">Email</label>
         <input type="email" name="username" id="email">
         <label for="senha">Senha</label>
         <input type="password" name="password" id="senha">
+        <button type="submit" data-enviar class="btn-principal btn-login">Logar</button>
+        <span data-erro-message class="erro-message"></span>
       </form>
-      <button type="submit" data-enviar class="btn-principal btn-login">Logar</button>
       <p class="trocar-senha">Perdeu a senha? Clique aqui.</p>
       <div class="criar-conta">
         <h2 class="titulo-criar">Crie a Sua Conta</h2>

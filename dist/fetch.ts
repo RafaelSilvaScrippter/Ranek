@@ -17,8 +17,8 @@ interface InterfaceProdutos {
   fotos: Array<InterfaceArray>;
 }
 
-export async function fetchDados<T>(url: string): Promise<T> {
-  const response = await fetch(url);
+export async function fetchDados<T>(url: string, obj?: {}): Promise<T> {
+  const response = await fetch(url, obj);
   const dados: T = await response.json();
   return dados;
 }
