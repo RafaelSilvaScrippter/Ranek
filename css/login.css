@@ -22,6 +22,7 @@
 }
 
 button {
+  cursor: pointer;
   border: none;
 }
 
@@ -51,6 +52,7 @@ form .btn-login {
 
 .trocar-senha:hover {
   color: #87f;
+  cursor: pointer;
 }
 
 .titulo-criar {
@@ -73,4 +75,21 @@ form .btn-login {
   font-size: 0.975rem;
   margin-top: 1.2rem;
   text-align: center;
+}
+
+[data-btn-abrir].none {
+  display: none;
+}
+
+[data-formulario] {
+  display: none !important;
+}
+
+[data-formulario].block {
+  display: grid !important;
+  grid-template-columns: 80px 1fr;
+}
+
+[data-formulario].block button {
+  grid-column: 2;
 }
