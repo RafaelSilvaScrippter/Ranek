@@ -27,7 +27,7 @@
         <input type="email" name="username" id="email">
         <label for="senha">Senha</label>
         <input type="password" name="password" id="senha">
-        <button type="submit" data-enviar class="btn-principal btn-login">Logar</button>
+        <button data-role="login" type="submit" data-enviar class="btn-principal btn-login">Logar</button>
         <span data-erro-message class="erro-message"></span>
       </form>
       <p class="trocar-senha">Perdeu a senha? Clique aqui.</p>
@@ -35,6 +35,7 @@
         <h2 class="titulo-criar">Crie a Sua Conta</h2>
         <button data-btn-abrir class="btn-principal btn-login">Criar Conta</button>
       </div>
+      <span data-erro-message-criar class="erro-message"></span>
       <form data-formulario action="">
         <label for='nome'>Nome</label>
         <input type='text' name='nome' id='nome' />
@@ -54,7 +55,7 @@
         <input type='text' name='cidade' id='cidade' />
         <label for='estado'>Estado</label>
         <input type='text' name='estado' id='estado' />
-        <button class='btn-principal'>Criar Usúario</button>
+        <button data-role="criar" data-btn-criar class='btn-principal'>Criar Usúario</button>
       </form>
     </main>
     <footer>Ranek. Alguns direitos reservados. (o conteúdo deste site é deletado a cada 20 minutos.)</footer>

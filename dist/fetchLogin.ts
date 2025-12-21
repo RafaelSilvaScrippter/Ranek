@@ -2,17 +2,30 @@ import { fetchDados } from "./fetch.js";
 
 export function postLogin() {
   const erroMessage = document.querySelector("[data-erro-message]");
+  const erroMessageCriar = document.querySelector("[data-erro-message-criar]");
   const dataEnviar = document.querySelector("[data-enviar]");
   const dataLoginForm = document.querySelector("[data-login]");
+
+  const dataFormularioCriar = document.querySelector("[data-formulario]");
+  const dataBtnCriar = document.querySelector("[data-btn-criar]");
 
   dataLoginForm?.addEventListener("submit", (e) => {
     e.preventDefault();
     if (e instanceof SubmitEvent) getTargetInput(e);
   });
 
+  dataFormularioCriar?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (e instanceof SubmitEvent) {
+      getTargetInput(e);
+    }
+  });
+
   interface CorpoLogin {
     [key: string]: string;
   }
+
+  type tiposRole = "criar" | "login" | undefined;
 
   function getTargetInput(e: SubmitEvent) {
     let objectDados: CorpoLogin = {};
@@ -25,7 +38,25 @@ export function postLogin() {
         }
       });
     }
-    postDados(objectDados);
+    if (e.submitter?.dataset) {
+      const typeRole = e.submitter.dataset.role;
+      if (typeRole) {
+        corresponedRole(typeRole, objectDados);
+      }
+
+      console.log(typeRole);
+    }
+  }
+
+  function corresponedRole(dados: tiposRole | string, objdatos: CorpoLogin) {
+    if (dados && typeof dados === "string") {
+      const tipo: tiposRole | string = dados;
+      if (tipo === "login") {
+        postDados(objdatos);
+      } else {
+        postCreate(objdatos);
+      }
+    }
   }
 
   interface Data {
@@ -52,5 +83,24 @@ export function postLogin() {
     if (erroMessage) {
       erroMessage.innerHTML = limpar;
     }
+  }
+
+  async function postCreate(objdatos: CorpoLogin) {
+    const response: ResponseLogin = await fetchDados(
+      "https://ranekapi.origamid.dev/json/api/usuario",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(objdatos),
+      }
+    );
+
+    if (erroMessageCriar && response.message) {
+      const limpar = response.message.replace("<strong></strong>", "");
+      erroMessageCriar.innerHTML = limpar;
+    }
+    console.log(response);
   }
 }
