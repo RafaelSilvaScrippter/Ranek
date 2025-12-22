@@ -37,10 +37,11 @@ button {
   margin-bottom: 2rem;
 }
 
-form .btn-login {
+form .btn-login,
+.criar-conta button {
   border: none;
   cursor: pointer;
-  width: 22vw;
+  width: 26vw;
   place-self: center;
 }
 
