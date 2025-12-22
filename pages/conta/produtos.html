@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuário</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="item-header">
+      <a href="../index.html">
+        <img src="../../imgs/ranek.svg" alt="Logo ranek">
+      </a>
+      <a class="btn-principal" href="./login.html">Vender / Login</a>
+    </div>
+  </header>
+  <main class="usuario">
+    <nav>
+      <ul class="ul-links-usuario">
+        <li><a class="link-ativo" href="#">Produtos</a></li>
+        <li><a href="#">Compras</a></li>
+        <li><a href="#">Vendas</a></li>
+        <li><a href="#">Editar Usuário</a></li>
+        <li><a href="#">Deslogar</a></li>
+      </ul>
+    </nav>
+    <div class="conteudo-usuario">
+      <h2>Adicionar Produto</h2>
+      <form class="formulario-post-produto " method="post">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome">
+        <label for="preco">Preco (R$)</label>
+        <input type="text" id="preco" name="preco">
+        <label for="fotos">Fotos (R$)</label>
+        <input type="file" id="fotos" name="fotos">
+        <label for="descricao">Descrição</label>
+        <textarea name="descricao" id="descricao"></textarea>
+        <button class="btn-principal">Adicionar Produto</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>

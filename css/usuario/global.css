@@ -1,0 +1,63 @@
+.formulario-post-produto {
+  display: grid;
+  margin-top: 4rem;
+  grid-template-columns: 120px 1fr;
+}
+
+@media (max-width: 430px) {
+  .formulario-post-produto {
+    display: grid !important;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  .formulario-post-produto label {
+    margin-bottom: 1rem !important;
+  }
+}
+
+.ul-links-usuario li a {
+  padding: 0.8rem 1.8rem;
+  display: block;
+  color: #334455;
+  border-radius: 8px;
+  font-size: 1.175rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 1rem 0;
+  background-color: #f4f7fc;
+}
+
+.ul-links-usuario .link-ativo {
+  background-color: #87f;
+  color: #f4f7fc;
+}
+
+.usuario {
+  padding: 2rem;
+  gap: 2.5rem;
+  max-width: 900px;
+  justify-content: center;
+  width: 100vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+@media (max-width: 700px) {
+  .usuario {
+    grid-template-columns: 1fr;
+  }
+}
+
+.conteudo-usuario {
+  margin-top: 1rem;
+}
+
+.conteudo-usuario h2 {
+  color: #334455;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.formulario-post-produto button {
+  grid-column: 1 / -1;
+}
