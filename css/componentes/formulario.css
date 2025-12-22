@@ -16,9 +16,15 @@ label {
   color: #334455;
 }
 
-input {
+textarea {
+  resize: none;
+}
+
+input,
+textarea {
   padding: 0.9rem 1.6rem;
   border: none;
+  margin-bottom: 1rem;
   width: 100%;
   box-shadow: 0 2px 4px rgba(30, 60, 90, 0.1);
 }
