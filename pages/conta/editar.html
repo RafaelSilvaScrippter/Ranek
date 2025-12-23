@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuário</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="item-header">
+      <a href="../../index.html">
+        <img src="../../imgs/ranek.svg" alt="Logo ranek">
+      </a>
+      <a class="btn-principal" href="../login.html">Vender / Login</a>
+    </div>
+  </header>
+  <main class="usuario">
+    <nav>
+      <ul class="ul-links-usuario">
+        <li><a href="./produtos.html">Produtos</a></li>
+        <li><a href="./compras.html">Compras</a></li>
+        <li><a href="./vendas.html">Vendas</a></li>
+        <li><a class="link-ativo" href="./editar.html">Editar Usuário</a></li>
+        <li><a href="#">Deslogar</a></li>
+      </ul>
+    </nav>
+    <div class="conteudo-usuario">
+      <form id="form-editar" class="editar-form" method="post">
+        <label for='nome'>Nome</label>
+        <input type='text' name='nome' id='nome' />
+        <label for='email'>Email</label>
+        <input type='email' name='email' id='email' />
+        <label for='senha'>Senha</label>
+        <input type='password' name='senha' id='senha' />
+        <label for='cep'>CEP</label>
+        <input type='number' name='cep' id='cep' />
+        <label for='rua'>Rua</label>
+        <input type='number' name='rua' id='rua' />
+        <label for='numero'>Número</label>
+        <input type='number' name='numero' id='numero' />
+        <label for='bairro'>Bairro</label>
+        <input type='text' name='bairro' id='bairro' />
+        <label for='cidade'>Cidade</label>
+        <input type='text' name='cidade' id='cidade' />
+        <label for='estado'>Estado</label>
+        <input type='text' name='estado' id='estado' />
+        <button class='btn-principal'>Atualizar Usuário</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>

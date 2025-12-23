@@ -4,6 +4,17 @@
   grid-template-columns: 120px 1fr;
 }
 
+.formulario-post-produto label,
+#form-editar label {
+  margin-bottom: 1rem !important;
+  display: block;
+}
+
+#form-editar {
+  grid-template-columns: 70px 1fr;
+  display: grid;
+}
+
 @media (max-width: 430px) {
   .formulario-post-produto {
     display: grid !important;
@@ -59,5 +70,28 @@
 }
 
 .formulario-post-produto button {
-  grid-column: 1 / -1;
+  grid-column: 2 / -1;
+}
+
+.formulario-post-produto.editar-form {
+  margin-top: 0px !important;
+}
+
+.editar-form label:not(:first-child),
+.editar-form input:not(:first-child) {
+  margin: 0 0 2.5rem 0;
+}
+
+.editar-form button {
+  place-self: start;
+}
+
+@media (max-width: 450px) {
+  .formulario-post-produto.editar-form {
+    grid-template-columns: 1fr;
+  }
+
+  #form-editar {
+    grid-template-columns: 1fr;
+  }
 }
