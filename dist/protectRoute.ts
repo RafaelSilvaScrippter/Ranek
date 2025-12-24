@@ -10,6 +10,6 @@ export function protectRoute() {
     linksHeaderLogin.href = "../pages/conta/produtos.html";
   }
   if (!tokenExists && linksHeaderLogin instanceof HTMLAnchorElement) {
-    linksHeaderLogin.href = "../../index.html";
+    linksHeaderLogin.href = "../pages/login.html";
   }
 }
