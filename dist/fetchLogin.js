@@ -64,7 +64,7 @@ export function postLogin() {
             }
         }
         if (response.token) {
-            location.href = "./conta/compras.html";
+            location.href = "./conta/produtos.html";
         }
         localStorage.setItem("token", response.token);
     }
