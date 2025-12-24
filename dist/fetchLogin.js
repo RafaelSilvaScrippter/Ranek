@@ -33,7 +33,6 @@ export function postLogin() {
             if (typeRole) {
                 corresponedRole(typeRole, objectDados);
             }
-            console.log(typeRole);
         }
     }
     function corresponedRole(dados, objdatos) {
@@ -53,12 +52,21 @@ export function postLogin() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(objectDados),
+            body: JSON.stringify({
+                username: objectDados.email,
+                password: objectDados.senha,
+            }),
         });
-        const limpar = response.message.replace("<strong></strong>", "");
-        if (erroMessage) {
-            erroMessage.innerHTML = limpar;
+        if (response.message) {
+            const limpar = response.message.replace("<strong></strong>", "");
+            if (erroMessage) {
+                erroMessage.innerHTML = limpar;
+            }
         }
+        if (response.token) {
+            location.href = "./conta/compras.html";
+        }
+        localStorage.setItem("token", response.token);
     }
     async function postCreate(objdatos) {
         const response = await fetchDados("https://ranekapi.origamid.dev/json/api/usuario", {
@@ -72,7 +80,9 @@ export function postLogin() {
             const limpar = response.message.replace("<strong></strong>", "");
             erroMessageCriar.innerHTML = limpar;
         }
-        console.log(response);
+        if (response.ID) {
+            postDados(objdatos);
+        }
     }
 }
 //# sourceMappingURL=fetchLogin.js.map
