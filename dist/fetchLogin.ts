@@ -25,6 +25,10 @@ export function postLogin() {
     [key: string]: string;
   }
 
+  interface ResponseId {
+    ID: number;
+  }
+
   type tiposRole = "criar" | "login" | undefined;
 
   function getTargetInput(e: SubmitEvent) {
@@ -43,8 +47,6 @@ export function postLogin() {
       if (typeRole) {
         corresponedRole(typeRole, objectDados);
       }
-
-      console.log(typeRole);
     }
   }
 
@@ -62,10 +64,11 @@ export function postLogin() {
   interface Data {
     status: number;
   }
-  interface ResponseLogin {
+  interface ResponseLogin extends ResponseId {
     code: string;
     data: Data;
     message: string;
+    token: string;
   }
 
   async function postDados(objectDados: CorpoLogin) {
@@ -76,13 +79,22 @@ export function postLogin() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(objectDados),
+        body: JSON.stringify({
+          username: objectDados.email,
+          password: objectDados.senha,
+        }),
       }
     );
-    const limpar = response.message.replace("<strong></strong>", "");
-    if (erroMessage) {
-      erroMessage.innerHTML = limpar;
+    if (response.message) {
+      const limpar = response.message.replace("<strong></strong>", "");
+      if (erroMessage) {
+        erroMessage.innerHTML = limpar;
+      }
     }
+    if (response.token) {
+      location.href = "./conta/produtos.html";
+    }
+    localStorage.setItem("token", response.token);
   }
 
   async function postCreate(objdatos: CorpoLogin) {
@@ -101,6 +113,8 @@ export function postLogin() {
       const limpar = response.message.replace("<strong></strong>", "");
       erroMessageCriar.innerHTML = limpar;
     }
-    console.log(response);
+    if (response.ID) {
+      postDados(objdatos);
+    }
   }
 }
