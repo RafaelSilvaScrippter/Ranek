@@ -4,9 +4,11 @@ import { getUsuario } from "./getUsuario.js";
 import { Logout } from "./logout.js";
 import { protectRoute } from "./protectRoute.js";
 import { AbrirFormularioCadastro } from "./showFormCreate.js";
+import { updateUser } from "./updateDados.js";
 protectRoute();
 Logout();
 getUsuario();
+updateUser();
 async function dados() {
     mostarDados();
 }
