@@ -55,7 +55,7 @@
 .header-main form input {
   grid-column: 1 / -1;
   max-width: 100%;
-  width: 60vw;
+  width: 40vw;
   color: #ccc;
   font-size: 1.2rem;
 }
