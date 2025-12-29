@@ -1,5 +1,7 @@
 import { abrirFormulario } from "./formularioCompra.js";
 
+const inputSearch = document.querySelector("[data-search]");
+const dataFormSearch = document.querySelector("[data-form-search]");
 const dataMain = document.querySelector("[data-main-produtos]");
 const dataMainProduto = document.querySelector("[data-produto-unico]");
 interface InterfaceArray {
@@ -23,13 +25,16 @@ export async function fetchDados<T>(url: string, obj?: {}): Promise<T> {
   return dados;
 }
 
+inputSearch?.addEventListener("keyup", (e) => {
+  console.log(e);
+});
+
 export async function mostarDados() {
   if (dataMain instanceof HTMLElement) {
     const dados = await fetchDados<InterfaceProdutos[]>(
-      "https://ranekapi.origamid.dev/json/api/produto?_limit=9"
+      `https://ranekapi.origamid.dev/json/api/produto?_limit=9&q=`
     );
     if (dados) {
-      console.log(dados);
       dados.map((dado) => {
         dataMain.innerHTML += /*html */ `
         <div class='card-item-produto'>
