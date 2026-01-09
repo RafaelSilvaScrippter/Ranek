@@ -4,6 +4,7 @@ import { getUsuario } from "./getUsuario.js";
 import { Logout } from "./logout.js";
 import { protectRoute } from "./protectRoute.js";
 import { AbrirFormularioCadastro } from "./showFormCreate.js";
+import { transacao } from "./transacao.js";
 import { updateUser } from "./updateDados.js";
 protectRoute();
 Logout();
