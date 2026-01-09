@@ -1,10 +1,10 @@
 import { fetchDados } from "./fetch.js";
+import { getUsuarioEmail } from "./transacao.js";
 export function getUsuario() {
     const dataFormEditar = document.querySelector("[data-form-editar]");
     const token = localStorage.getItem("token");
     if (!token)
         return;
-    console.log(token);
     async function validateLogin() {
         const response = await fetchDados("https://ranekapi.origamid.dev/json/jwt-auth/v1/token/validate", {
             method: "POST",
@@ -17,14 +17,21 @@ export function getUsuario() {
     }
     validateLogin();
     async function requestGet() {
-        const response = await fetchDados("https://ranekapi.origamid.dev/json/api/usuario", {
+        let response = await fetchDados("https://ranekapi.origamid.dev/json/api/usuario", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log(response);
+        let dadosUsuario = await fetchDados("https://ranekapi.origamid.dev/json/api/usuario", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        getUsuarioEmail(dadosUsuario);
         showDados(response);
     }
     function showDados(dadosObj) {

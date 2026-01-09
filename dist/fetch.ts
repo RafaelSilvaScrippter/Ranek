@@ -1,4 +1,5 @@
 import { abrirFormulario } from "./formularioCompra.js";
+import { getProdutoUnique } from "./transacao.js";
 
 const inputSearch = document.querySelector("[data-search]");
 const dataFormSearch = document.querySelector("[data-form-search]");
@@ -62,6 +63,7 @@ export async function getProduto() {
   const dados = await fetchDados<InterfaceProdutos>(
     `https://ranekapi.origamid.dev/json/api/produto/${getParams}`
   );
+  getProdutoUnique(dados)
   console.log(dados);
   if (dados && dataMainProduto) {
     dataMainProduto.innerHTML = /*html */ `

@@ -1,3 +1,4 @@
+import { transacao } from "./transacao.js";
 function criarFormulario(elements) {
     const createForm = document.createElement("form");
     createForm.setAttribute("data-formulario-comprar", "");
@@ -21,10 +22,14 @@ function criarFormulario(elements) {
   <input type='text' name='cidade' id='cidade'/>
   <label for='estado'>Estado</label>
   <input type='text' name='estado' id='estado'/>
-  <button class='btn-secundario'>Finalizar Compra</button>
+  <button data-btn-transacao class='btn-secundario'>Finalizar Compra</button>
   `;
     if (elements?.appendForm) {
         elements?.appendForm.appendChild(createForm);
+        const btn = elements.appendForm.querySelector('[data-btn-transacao]');
+        if (btn instanceof HTMLButtonElement) {
+            transacao(btn);
+        }
     }
 }
 export function abrirFormulario(elements) {
