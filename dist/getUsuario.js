@@ -2,6 +2,7 @@ import { fetchDados } from "./fetch.js";
 import { getUsuarioEmail } from "./transacao.js";
 export function getUsuario() {
     const dataFormEditar = document.querySelector("[data-form-editar]");
+    const linkUsuario = document.querySelector('[data-login-link]');
     const token = localStorage.getItem("token");
     if (!token)
         return;
@@ -31,6 +32,9 @@ export function getUsuario() {
                 Authorization: `Bearer ${token}`,
             },
         });
+        if (token && linkUsuario && linkUsuario instanceof HTMLAnchorElement) {
+            linkUsuario.innerText = dadosUsuario.nome;
+        }
         getUsuarioEmail(dadosUsuario);
         showDados(response);
     }
