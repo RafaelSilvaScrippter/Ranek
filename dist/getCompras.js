@@ -8,10 +8,8 @@ export async function getTransacao() {
             Authorization: 'Bearer ' + window.localStorage.getItem('token')?.replace('Bearer', '')
         }
     });
-    console.log(dados);
     if (dataCompras && dataCompras instanceof HTMLElement) {
         dados.forEach((produto) => {
-            console.log(produto.vendedor_id);
             dataCompras.innerHTML += `
             <div class='produto-compra-item'>
                 <div class="foto-compra">
