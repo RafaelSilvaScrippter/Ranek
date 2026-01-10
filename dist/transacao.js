@@ -34,7 +34,15 @@ export function transacao(btn) {
                     numero: usuarioEmail.numero,
                     rua: usuarioEmail.rua
                 },
-                produto_id: produto.id,
+                produto: {
+                    descricao: produto.descricao,
+                    id: produto.id,
+                    fotos: produto.fotos,
+                    nome: produto.nome,
+                    preco: produto.preco,
+                    usuario_id: produto.usuario_id,
+                    vendido: 'true'
+                },
                 vendedor_id: produto.usuario_id
             })
         });

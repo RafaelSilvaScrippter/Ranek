@@ -1,5 +1,6 @@
 import { mostarDados } from "./fetch.js";
 import { postLogin } from "./fetchLogin.js";
+import { getTransacao } from "./getCompras.js";
 import { getUsuario } from "./getUsuario.js";
 import { Logout } from "./logout.js";
 import { protectRoute } from "./protectRoute.js";
@@ -15,4 +16,5 @@ async function dados() {
 dados();
 postLogin();
 AbrirFormularioCadastro();
+getTransacao();
 //# sourceMappingURL=script.js.map
