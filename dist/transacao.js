@@ -18,7 +18,6 @@ export function transacao(btn) {
         comprarProduto();
     });
     async function comprarProduto() {
-        console.log(produto);
         const dados = await fetchDados('https://ranekapi.origamid.dev/json/api/transacao', {
             method: 'POST',
             headers: {
@@ -39,7 +38,9 @@ export function transacao(btn) {
                 vendedor_id: produto.usuario_id
             })
         });
-        console.log(dados);
+        if (dados.post_status === "publish") {
+            window.location.href = '/pages/conta/compras.html';
+        }
     }
 }
 //# sourceMappingURL=transacao.js.map

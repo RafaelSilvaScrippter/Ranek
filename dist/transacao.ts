@@ -5,6 +5,13 @@ interface InterfaceArray {
   titulo: string;
 }
 
+interface transacaoConcluida {
+    post_author:number;
+    post_status:string;
+    post_title:string;
+    post_type:string
+}
+
 interface InterfaceProdutos {
   descricao: string;
   id: string;
@@ -49,9 +56,8 @@ export function transacao(btn:HTMLButtonElement){
         comprarProduto()
     })
     
-    async function comprarProduto(){
-    console.log(produto)        
-        const dados = await fetchDados('https://ranekapi.origamid.dev/json/api/transacao',{
+    async function comprarProduto(){   
+        const dados:transacaoConcluida = await fetchDados('https://ranekapi.origamid.dev/json/api/transacao',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',
@@ -71,6 +77,9 @@ export function transacao(btn:HTMLButtonElement){
                 vendedor_id:produto.usuario_id
             })
         })
+        if(dados.post_status === "publish"){
+            window.location.href = '/pages/conta/compras.html'
+        }
 
     }
 
