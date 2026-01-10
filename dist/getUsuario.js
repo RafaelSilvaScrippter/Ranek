@@ -38,15 +38,25 @@ export function getUsuario() {
         getUsuarioEmail(dadosUsuario);
         showDados(response);
     }
+    function preencherDados(formulario, dadosObj) {
+        const inputs = formulario.querySelectorAll("input");
+        console.log(inputs);
+        inputs.forEach((input) => {
+            const key = input.id;
+            if (key in dadosObj) {
+                input.value = String(dadosObj[key]) ?? "";
+            }
+        });
+    }
     function showDados(dadosObj) {
-        if (dataFormEditar) {
-            const inputs = dataFormEditar.querySelectorAll("input");
-            inputs.forEach((input) => {
-                const key = input.id;
-                if (key in dadosObj) {
-                    input.value = String(dadosObj[key]) ?? "";
-                }
-            });
+        if (dataFormEditar instanceof HTMLElement) {
+            preencherDados(dataFormEditar, dadosObj);
+        }
+        else {
+            const elementoComprar = document.querySelector('[data-formulario-comprar]');
+            if (elementoComprar instanceof HTMLElement) {
+                preencherDados(elementoComprar, dadosObj);
+            }
         }
     }
     requestGet();

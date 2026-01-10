@@ -7,7 +7,8 @@ interface DadosObj {
 
 function criarFormulario(elements: DadosObj) {
   const createForm = document.createElement("form");
-  createForm.setAttribute("data-formulario-comprar", "");
+  createForm.setAttribute("data-form-editar", "");
+   createForm.setAttribute("data-formulario-comprar", "");
   createForm.classList.add("formulario");
   createForm.innerHTML = `
   <label for='nome'>Nome</label>

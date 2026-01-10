@@ -1,4 +1,5 @@
 import { fetchDados } from "./fetch.js";
+
 import { getUsuarioEmail } from "./transacao.js";
 
 export function getUsuario() {
@@ -69,15 +70,28 @@ export function getUsuario() {
     showDados(response);
   }
 
-  function showDados(dadosObj: DadosGetLogin[]) {
-    if (dataFormEditar) {
-      const inputs = dataFormEditar.querySelectorAll("input");
+  function preencherDados(formulario:HTMLElement,dadosObj:DadosGetLogin[]){
+    const inputs = formulario.querySelectorAll("input");
+    console.log(inputs)
       inputs.forEach((input) => {
         const key = input.id as keyof DadosGetLogin[];
         if (key in dadosObj) {
           input.value = String(dadosObj[key]) ?? "";
         }
       });
+  }
+
+  function showDados(dadosObj: DadosGetLogin[]) {
+    
+    
+
+    if (dataFormEditar instanceof HTMLElement) {
+      preencherDados(dataFormEditar,dadosObj)
+    }else{
+      const elementoComprar = document.querySelector('[data-formulario-comprar]')
+      if(elementoComprar instanceof HTMLElement){
+        preencherDados(elementoComprar,dadosObj)
+      }
     }
   }
 

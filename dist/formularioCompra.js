@@ -1,6 +1,7 @@
 import { transacao } from "./transacao.js";
 function criarFormulario(elements) {
     const createForm = document.createElement("form");
+    createForm.setAttribute("data-form-editar", "");
     createForm.setAttribute("data-formulario-comprar", "");
     createForm.classList.add("formulario");
     createForm.innerHTML = `
