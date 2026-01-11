@@ -20,7 +20,7 @@ export async function mostarDados() {
                 dataMain.innerHTML += `
         <div class='card-item-produto'>
         <a href=./pages/produto?produto=${dado.id}.html>
-            <img src="${dado.fotos[0] ? dado.fotos[0].src : ''}" title="${dado.fotos[0].titulo}" />
+            <img src="${dado.fotos ? dado.fotos[0].src : ''}" title="${dado.fotos ? dado.fotos[0].titulo : ''}" />
             <div class="header-card">
               <p class="preco-card">R$ ${dado.preco}</p>  
               <h2 class="nome-card">${dado.nome}</h2>
