@@ -14,13 +14,13 @@ inputSearch?.addEventListener("keyup", (e) => {
 });
 export async function mostarDados() {
     if (dataMain instanceof HTMLElement) {
-        const dados = await fetchDados(`https://ranekapi.origamid.dev/json/api/produto?_limit=9&q=`);
+        const dados = await fetchDados(`https://ranekapi.origamid.dev/json/api/produto`);
         if (dados) {
             dados.map((dado) => {
                 dataMain.innerHTML += `
         <div class='card-item-produto'>
         <a href=./pages/produto?produto=${dado.id}.html>
-            <img src="${dado.fotos[0].src}" title="${dado.fotos[0].titulo}" />
+            <img src="${dado.fotos[0] ? dado.fotos[0].src : ''}" title="${dado.fotos[0].titulo}" />
             <div class="header-card">
               <p class="preco-card">R$ ${dado.preco}</p>  
               <h2 class="nome-card">${dado.nome}</h2>
@@ -41,7 +41,6 @@ export async function getProduto() {
         return;
     const dados = await fetchDados(`https://ranekapi.origamid.dev/json/api/produto/${getParams}`);
     getProdutoUnique(dados);
-    console.log(dados);
     if (dados && dataMainProduto) {
         dataMainProduto.innerHTML = `
     <div class="div-produto-container">

@@ -29,16 +29,16 @@
     </nav>
     <div class="conteudo-usuario">
       <h2>Adicionar Produto</h2>
-      <form class="formulario-post-produto " method="post">
+      <form data-formulario-post class="formulario-post-produto " method="post">
         <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome">
-        <label for="preco">Preco (R$)</label>
-        <input type="text" id="preco" name="preco">
-        <label for="fotos">Fotos (R$)</label>
-        <input type="file" id="fotos" name="fotos">
-        <label for="descricao">Descrição</label>
-        <textarea name="descricao" id="descricao"></textarea>
-        <button class="btn-principal">Adicionar Produto</button>
+        <input data-input-post type="text" id="nome" name="nome">
+        <label  for="preco">Preco (R$)</label>
+        <input data-input-post type="text" id="preco" name="preco">
+        <label for="fotos">Fotos</label>
+        <input data-input-file type="file" id="fotos" name="fotos">
+        <label  for="descricao">Descrição</label>
+        <textarea data-input-post name="descricao" id="descricao"></textarea>
+        <button data-postar-produto class="btn-principal">Adicionar Produto</button>
       </form>
     </div>
   </main>
