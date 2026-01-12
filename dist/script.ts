@@ -7,11 +7,13 @@ import { postProduto } from "./postProduto.js";
 import { protectRoute } from "./protectRoute.js";
 import { AbrirFormularioCadastro } from "./showFormCreate.js";
 import { updateUser } from "./updateDados.js";
+import { vendas } from "./vendas.js";
 protectRoute();
 Logout();
 getUsuario();
 updateUser();
 postProduto()
+vendas()
 
 async function dados() {
   mostarDados();
