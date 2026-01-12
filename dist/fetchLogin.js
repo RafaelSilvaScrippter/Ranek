@@ -2,10 +2,8 @@ import { fetchDados } from "./fetch.js";
 export function postLogin() {
     const erroMessage = document.querySelector("[data-erro-message]");
     const erroMessageCriar = document.querySelector("[data-erro-message-criar]");
-    const dataEnviar = document.querySelector("[data-enviar]");
     const dataLoginForm = document.querySelector("[data-login]");
     const dataFormularioCriar = document.querySelector("[data-formulario]");
-    const dataBtnCriar = document.querySelector("[data-btn-criar]");
     dataLoginForm?.addEventListener("submit", (e) => {
         e.preventDefault();
         if (e instanceof SubmitEvent)
@@ -46,15 +44,16 @@ export function postLogin() {
             }
         }
     }
-    async function postDados(objectDados) {
+    async function postDados(objectDados, create) {
+        console.log(create);
         const response = await fetchDados("https://ranekapi.origamid.dev/json/jwt-auth/v1/token", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                username: objectDados.email,
-                password: objectDados.senha,
+                username: create ? objectDados.email : objectDados.username,
+                password: create ? objectDados.senha : objectDados.password,
             }),
         });
         if (response.message) {
@@ -81,7 +80,7 @@ export function postLogin() {
             erroMessageCriar.innerHTML = limpar;
         }
         if (response.ID) {
-            postDados(objdatos);
+            postDados(objdatos, true);
         }
     }
 }
