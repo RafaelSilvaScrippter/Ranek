@@ -1,4 +1,4 @@
-import { fetchDados, mostarDados } from "./fetch.js";
+import { mostarDados } from "./fetch.js";
 import { postLogin } from "./fetchLogin.js";
 import { getTransacao } from "./getCompras.js";
 import { getUsuario } from "./getUsuario.js";
@@ -13,12 +13,14 @@ Logout();
 getUsuario();
 updateUser();
 postProduto()
-vendas()
-
+if(window.localStorage.getItem('token')){
+  vendas()
+  getTransacao()
+}
+  
 async function dados() {
   mostarDados();
 }
 dados();
 postLogin();
 AbrirFormularioCadastro();
-getTransacao()

@@ -13,12 +13,14 @@ Logout();
 getUsuario();
 updateUser();
 postProduto();
-vendas();
+if (window.localStorage.getItem('token')) {
+    vendas();
+    getTransacao();
+}
 async function dados() {
     mostarDados();
 }
 dados();
 postLogin();
 AbrirFormularioCadastro();
-getTransacao();
 //# sourceMappingURL=script.js.map

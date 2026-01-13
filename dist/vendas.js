@@ -8,7 +8,6 @@ export async function vendas() {
             Authorization: 'Bearer ' + window.localStorage.getItem("token")?.replace('Bearer', '')
         }
     });
-    console.log(dados);
     dados.forEach((produto) => {
         if (dataVendasContainer instanceof HTMLDivElement)
             dataVendasContainer.innerHTML += `
