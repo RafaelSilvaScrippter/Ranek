@@ -9,12 +9,12 @@ export async function fetchDados(url, obj) {
     const dados = await response.json();
     return dados;
 }
-inputSearch?.addEventListener("keyup", (e) => {
+inputSearch?.addEventListener("input", (e) => {
     console.log(e);
 });
 export async function mostarDados() {
     if (dataMain instanceof HTMLElement) {
-        const dados = await fetchDados(`https://ranekapi.origamid.dev/json/api/produto`);
+        const dados = await fetchDados(`https://ranekapi.origamid.dev/json/api/produto?_limit=9&q=`);
         if (dados) {
             dados.map((dado) => {
                 dataMain.innerHTML += `

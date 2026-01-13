@@ -26,14 +26,14 @@ export async function fetchDados<T>(url: string, obj?: {}): Promise<T> {
   return dados;
 }
 
-inputSearch?.addEventListener("keyup", (e) => {
+inputSearch?.addEventListener("input", (e) => {
   console.log(e);
 });
 
 export async function mostarDados() {
   if (dataMain instanceof HTMLElement) {
     const dados = await fetchDados<InterfaceProdutos[]>(
-      `https://ranekapi.origamid.dev/json/api/produto`
+      `https://ranekapi.origamid.dev/json/api/produto?_limit=9&q=`
     );
     if (dados) {
       dados.map((dado) => {
