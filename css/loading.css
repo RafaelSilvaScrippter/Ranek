@@ -1,0 +1,70 @@
+.loading-elemento span{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #87f;
+}
+
+.loading-elemento .primeiro{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #87f;
+    animation: infinite 1s floating;
+    animation-delay: 2s;
+}
+
+.loading-elemento .segundo{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #87f;
+    animation: infinite 1s floating2;
+}
+
+
+.loading-elemento .terceiro{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #87f;
+    animation: infinite 1s floating3;
+}
+
+.loading-elemento{
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+@keyframes floating {
+    from{
+        transform: translateY(18px); 
+    }
+    to{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes floating2 {
+    from{
+        transform: translateY(18px); 
+    }
+    to{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes floating3 {
+    from{
+        transform: translateY(18px); 
+    }
+    to{
+        transform: translateY(0px);
+    }
+}
