@@ -3,6 +3,8 @@ export function postLogin() {
     const erroMessage = document.querySelector("[data-erro-message]");
     const erroMessageCriar = document.querySelector("[data-erro-message-criar]");
     const dataLoginForm = document.querySelector("[data-login]");
+    const dataEnviarBtn = document.querySelector('[data-enviar]');
+    const dataBtnCriar = document.querySelector('[data-btn-criar]');
     const dataFormularioCriar = document.querySelector("[data-formulario]");
     dataLoginForm?.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -45,42 +47,78 @@ export function postLogin() {
         }
     }
     async function postDados(objectDados, create) {
-        console.log(create);
-        const response = await fetchDados("https://ranekapi.origamid.dev/json/jwt-auth/v1/token", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username: create ? objectDados.email : objectDados.username,
-                password: create ? objectDados.senha : objectDados.password,
-            }),
-        });
-        if (response.message) {
-            const limpar = response.message.replace("<strong></strong>", "");
-            if (erroMessage) {
-                erroMessage.innerHTML = limpar;
+        try {
+            if (dataEnviarBtn && dataEnviarBtn instanceof HTMLButtonElement) {
+                dataEnviarBtn.innerText = 'carregando';
+                dataEnviarBtn.disabled = true;
+            }
+            const response = await fetchDados("https://ranekapi.origamid.dev/json/jwt-auth/v1/token", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: create ? objectDados.email : objectDados.username,
+                    password: create ? objectDados.senha : objectDados.password,
+                }),
+            });
+            if (response.message) {
+                const limpar = response.message.replace("<strong></strong>", "");
+                if (erroMessage) {
+                    erroMessage.innerHTML = limpar;
+                }
+            }
+            if (response.token) {
+                location.href = "./conta/produtos.html";
+            }
+            localStorage.setItem("token", response.token);
+        }
+        catch (err) {
+            if (dataEnviarBtn && dataEnviarBtn instanceof HTMLButtonElement) {
+                dataEnviarBtn.innerText = 'Logar';
+                dataEnviarBtn.disabled = false;
+            }
+            console.log(err);
+        }
+        finally {
+            if (dataEnviarBtn && dataEnviarBtn instanceof HTMLButtonElement) {
+                dataEnviarBtn.innerText = 'Logar';
+                dataEnviarBtn.disabled = false;
             }
         }
-        if (response.token) {
-            location.href = "./conta/produtos.html";
-        }
-        localStorage.setItem("token", response.token);
     }
     async function postCreate(objdatos) {
-        const response = await fetchDados("https://ranekapi.origamid.dev/json/api/usuario", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(objdatos),
-        });
-        if (erroMessageCriar && response.message) {
-            const limpar = response.message.replace("<strong></strong>", "");
-            erroMessageCriar.innerHTML = limpar;
+        try {
+            if (dataBtnCriar && dataBtnCriar instanceof HTMLButtonElement) {
+                dataBtnCriar.innerText = 'carregando';
+                dataBtnCriar.disabled = true;
+            }
+            const response = await fetchDados("https://ranekapi.origamid.dev/json/api/usuario", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(objdatos),
+            });
+            if (erroMessageCriar && response.message) {
+                const limpar = response.message.replace("<strong></strong>", "");
+                erroMessageCriar.innerHTML = limpar;
+            }
+            if (response.ID) {
+                postDados(objdatos, true);
+            }
         }
-        if (response.ID) {
-            postDados(objdatos, true);
+        catch (err) {
+            if (dataBtnCriar && dataBtnCriar instanceof HTMLButtonElement) {
+                dataBtnCriar.innerText = 'Criar Usúario';
+                dataBtnCriar.disabled = false;
+            }
+        }
+        finally {
+            if (dataBtnCriar && dataBtnCriar instanceof HTMLButtonElement) {
+                dataBtnCriar.innerText = 'Criar Usúario';
+                dataBtnCriar.disabled = false;
+            }
         }
     }
 }
