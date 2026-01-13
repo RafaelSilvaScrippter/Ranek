@@ -1,6 +1,8 @@
 import { abrirFormulario } from "./formularioCompra.js";
 import { getProdutoUnique } from "./transacao.js";
 
+const dataElementoLoadingProduto = document.querySelector('[data-elemento-loading-produto]')
+const dataElementoLoading = document.querySelector('[data-elemento-loading]')
 const inputSearch = document.querySelector("[data-search]");
 const dataFormSearch = document.querySelector("[data-form-search]");
 const dataMain = document.querySelector("[data-main-produtos]");
@@ -32,9 +34,26 @@ inputSearch?.addEventListener("input", (e) => {
 
 export async function mostarDados() {
   if (dataMain instanceof HTMLElement) {
-    const dados = await fetchDados<InterfaceProdutos[]>(
-      `https://ranekapi.origamid.dev/json/api/produto?_limit=9&q=`
-    );
+    let dados;
+    try{
+      if(dataElementoLoadingProduto && dataElementoLoadingProduto instanceof HTMLDivElement){
+
+        dataElementoLoadingProduto.style.display = 'flex' 
+      }
+      dados = await fetchDados<InterfaceProdutos[]>(
+        `https://ranekapi.origamid.dev/json/api/produto?_limit=9&q=`
+      );
+    }catch(err){
+      if(dataElementoLoadingProduto && dataElementoLoadingProduto instanceof HTMLDivElement){
+
+        dataElementoLoadingProduto.style.display = 'none' 
+      }
+    }finally{
+        if(dataElementoLoadingProduto && dataElementoLoadingProduto instanceof HTMLDivElement){
+
+        dataElementoLoadingProduto.style.display = 'none' 
+      }
+    }
     if (dados) {
       dados.map((dado) => {
         dataMain.innerHTML += /*html */ `
@@ -59,10 +78,28 @@ const getParams = new URLSearchParams(window.location.search)
   ?.replace(".html", "");
 
 export async function getProduto() {
+  let dados
   if (!getParams) return;
-  const dados = await fetchDados<InterfaceProdutos>(
-    `https://ranekapi.origamid.dev/json/api/produto/${getParams}`
-  );
+  try{
+    if(dataElementoLoading && dataElementoLoading instanceof HTMLDivElement){
+      dataElementoLoading.style.display = 'flex'
+      console.log('hello')
+    }
+
+    dados = await fetchDados<InterfaceProdutos>(
+      `https://ranekapi.origamid.dev/json/api/produto/${getParams}`
+    );
+  }catch(err){
+    console.log(err)
+    if(dataElementoLoading && dataElementoLoading instanceof HTMLDivElement){
+      dataElementoLoading.style.display = 'none'
+    }
+  }finally{
+    if(dataElementoLoading && dataElementoLoading instanceof HTMLDivElement){
+      dataElementoLoading.style.display = 'none'
+    }
+  }
+  if(dados)
   getProdutoUnique(dados)
   if (dados && dataMainProduto) {
     dataMainProduto.innerHTML = /*html */ `

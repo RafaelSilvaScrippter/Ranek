@@ -34,18 +34,25 @@ export async function getTransacao(){
         produto:produto;
         vendedor_id:string;
     }
+    const dataElementoLoading = document.querySelector('[data-elemento-loading]')
 
     const dataCompras = document.querySelector('[data-compras]')
-    const dados:compras[] = await fetchDados('https://ranekapi.origamid.dev/json/api/transacao?tipo=comprador_id',{
-        method:'GET',
-        headers:{
-            'Content-Type':'application/json',
-            Authorization: 'Bearer ' + window.localStorage.getItem('token')?.replace('Bearer','')
+    
+    try{
+         if(dataElementoLoading && dataElementoLoading instanceof HTMLDivElement){
+
+            dataElementoLoading.style.display = 'flex'
         }
-    })
-    if(dataCompras && dataCompras instanceof HTMLElement){
-        dados.forEach((produto) =>{
-            dataCompras.innerHTML += `
+        const dados:compras[] = await fetchDados('https://ranekapi.origamid.dev/json/api/transacao?tipo=comprador_id',{
+            method:'GET',
+            headers:{
+                'Content-Type':'application/json',
+                Authorization: 'Bearer ' + window.localStorage.getItem('token')?.replace('Bearer','')
+            }
+        })
+        if(dataCompras && dataCompras instanceof HTMLElement){
+            dados.forEach((produto) =>{
+                dataCompras.innerHTML += `
             <div class='produto-compra-item'>
                 <div class="foto-compra">
                     <img  src="${produto.produto.fotos[0].src}" title='${produto.produto.fotos[0].titulo}' />
@@ -55,8 +62,20 @@ export async function getTransacao(){
                     <h2>${produto.produto.nome}</h2>
                     <p> <span class="vendedor-span">Vendedor: </span>${produto.vendedor_id}</p>
                 </div>
-            </div>
-            `
-        })
+                </div>
+                `
+            })
+        }
+    }catch(err){
+        if(dataElementoLoading && dataElementoLoading instanceof HTMLDivElement){
+
+            dataElementoLoading.style.display = 'none'
+        }
+    }finally{
+ if(dataElementoLoading && dataElementoLoading instanceof HTMLDivElement){
+
+            dataElementoLoading.style.display = 'none'
+        }
     }
+    
 }
