@@ -68,10 +68,12 @@ export function postLogin() {
                     erroMessage.innerHTML = limpar;
                 }
             }
+            else {
+                localStorage.setItem("token", response.token);
+            }
             if (response.token) {
                 location.href = "./conta/produtos.html";
             }
-            localStorage.setItem("token", response.token);
         }
         catch (err) {
             if (dataEnviarBtn && dataEnviarBtn instanceof HTMLButtonElement) {
