@@ -1,4 +1,4 @@
-import { mostarDados } from "./fetch.js";
+import { getProduto, mostarDados } from "./fetch.js";
 import { postLogin } from "./fetchLogin.js";
 import { getTransacao } from "./getCompras.js";
 import { getUsuario } from "./getUsuario.js";
@@ -18,8 +18,12 @@ if (window.localStorage.getItem('token')) {
     getTransacao();
 }
 async function dados() {
-    mostarDados();
+    if (window.location.href.includes('/pages/produto?produto')) {
+        console.log('contem');
+        getProduto();
+    }
 }
+mostarDados();
 dados();
 postLogin();
 AbrirFormularioCadastro();
