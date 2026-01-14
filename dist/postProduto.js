@@ -28,15 +28,32 @@ export function postProduto() {
         }
     }
     async function postar() {
-        console.log(formData);
-        const dados = await fetchDados('https://ranekapi.origamid.dev/json/api/produto', {
-            method: 'POST',
-            headers: {
-                Authorization: "Bearer " + window.localStorage.getItem('token')?.replace('Bearer', '')
-            },
-            body: formData
-        });
-        console.log(dados);
+        try {
+            if (btnPostarProduto && btnPostarProduto instanceof HTMLButtonElement) {
+                btnPostarProduto.disabled = true;
+                btnPostarProduto.innerText = 'Carregando';
+            }
+            const dados = await fetchDados('https://ranekapi.origamid.dev/json/api/produto', {
+                method: 'POST',
+                headers: {
+                    Authorization: "Bearer " + window.localStorage.getItem('token')?.replace('Bearer', '')
+                },
+                body: formData
+            });
+        }
+        catch (err) {
+            if (btnPostarProduto && btnPostarProduto instanceof HTMLButtonElement) {
+                btnPostarProduto.disabled = false;
+                btnPostarProduto.innerText = 'Adicionar Produto';
+            }
+            console.log(err);
+        }
+        finally {
+            if (btnPostarProduto && btnPostarProduto instanceof HTMLButtonElement) {
+                btnPostarProduto.disabled = false;
+                btnPostarProduto.innerText = 'Adicionar Produto';
+            }
+        }
     }
 }
 //# sourceMappingURL=postProduto.js.map
