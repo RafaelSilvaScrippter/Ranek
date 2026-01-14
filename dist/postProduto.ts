@@ -33,7 +33,13 @@ export function postProduto(){
     }
 
   async  function postar(){
-        console.log(formData)
+        
+    try{
+        if(btnPostarProduto  && btnPostarProduto instanceof HTMLButtonElement){
+            btnPostarProduto.disabled = true;
+            btnPostarProduto.innerText = 'Carregando'
+        }
+
         const dados = await fetchDados('https://ranekapi.origamid.dev/json/api/produto',{
             method:'POST',
             headers:{
@@ -41,8 +47,20 @@ export function postProduto(){
             },
             body:formData
         })
-        console.log(dados)
+        
+    }catch(err){
+        if(btnPostarProduto  && btnPostarProduto instanceof HTMLButtonElement){
+            btnPostarProduto.disabled = false;
+            btnPostarProduto.innerText = 'Adicionar Produto'
+        }
+        console.log(err)
+    }finally{
+        if(btnPostarProduto  && btnPostarProduto instanceof HTMLButtonElement){
+            btnPostarProduto.disabled = false;
+            btnPostarProduto.innerText = 'Adicionar Produto'
+        }
     }
+}
 
 }
 
