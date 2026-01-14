@@ -11,17 +11,27 @@ export async function fetchDados(url, obj) {
     const dados = await response.json();
     return dados;
 }
-inputSearch?.addEventListener("input", (e) => {
-    console.log(e);
-});
-export async function mostarDados() {
+let valueSearch;
+if (dataFormSearch && dataFormSearch instanceof HTMLFormElement) {
+    dataFormSearch?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (inputSearch && inputSearch instanceof HTMLInputElement) {
+            valueSearch = inputSearch.value;
+            mostarDados(valueSearch);
+        }
+    });
+}
+export async function mostarDados(valor) {
+    if (dataMain && dataMain instanceof HTMLElement) {
+        dataMain.innerHTML = '';
+    }
     if (dataMain instanceof HTMLElement) {
         let dados;
         try {
             if (dataElementoLoadingProduto && dataElementoLoadingProduto instanceof HTMLDivElement) {
                 dataElementoLoadingProduto.style.display = 'flex';
             }
-            dados = await fetchDados(`https://ranekapi.origamid.dev/json/api/produto?_limit=9&q=`);
+            dados = await fetchDados(`https://ranekapi.origamid.dev/json/api/produto?_limit=9&q=${valor ? valor : ''}`);
         }
         catch (err) {
             if (dataElementoLoadingProduto && dataElementoLoadingProduto instanceof HTMLDivElement) {
@@ -61,7 +71,6 @@ export async function getProduto() {
     try {
         if (dataElementoLoading && dataElementoLoading instanceof HTMLDivElement) {
             dataElementoLoading.style.display = 'flex';
-            console.log('hello');
         }
         dados = await fetchDados(`https://ranekapi.origamid.dev/json/api/produto/${getParams}`);
     }
@@ -115,5 +124,4 @@ export async function getProduto() {
         }
     }
 }
-getProduto();
 //# sourceMappingURL=fetch.js.map

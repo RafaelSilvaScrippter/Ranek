@@ -28,11 +28,26 @@ export async function fetchDados<T>(url: string, obj?: {}): Promise<T> {
   return dados;
 }
 
-inputSearch?.addEventListener("input", (e) => {
-  console.log(e);
-});
+let valueSearch:string;
+if(dataFormSearch && dataFormSearch instanceof HTMLFormElement){
 
-export async function mostarDados() {
+  
+  dataFormSearch?.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    if(inputSearch && inputSearch instanceof HTMLInputElement){
+      valueSearch =  inputSearch.value
+      mostarDados(valueSearch)
+    }
+
+  })
+}
+
+export async function mostarDados(valor?:string) {
+  if(dataMain && dataMain instanceof HTMLElement){
+
+    dataMain.innerHTML = ''
+  }
   if (dataMain instanceof HTMLElement) {
     let dados;
     try{
@@ -41,7 +56,7 @@ export async function mostarDados() {
         dataElementoLoadingProduto.style.display = 'flex' 
       }
       dados = await fetchDados<InterfaceProdutos[]>(
-        `https://ranekapi.origamid.dev/json/api/produto?_limit=9&q=`
+        `https://ranekapi.origamid.dev/json/api/produto?_limit=9&q=${valor ? valor : ''}`
       );
     }catch(err){
       if(dataElementoLoadingProduto && dataElementoLoadingProduto instanceof HTMLDivElement){
@@ -83,7 +98,6 @@ export async function getProduto() {
   try{
     if(dataElementoLoading && dataElementoLoading instanceof HTMLDivElement){
       dataElementoLoading.style.display = 'flex'
-      console.log('hello')
     }
 
     dados = await fetchDados<InterfaceProdutos>(
@@ -144,4 +158,3 @@ export async function getProduto() {
     }
   }
 }
-getProduto();

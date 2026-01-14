@@ -50,6 +50,8 @@
 .header-main {
   grid-column: 1 / -1;
   place-self: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 90px;
 }
 
 .header-main form input {
@@ -58,20 +60,6 @@
   width: 40vw;
   color: #ccc;
   font-size: 1.2rem;
-}
-.header-main form {
-  position: relative;
-}
-
-.header-main form::before {
-  content: url("../imgs/search.svg");
-  display: block;
-  width: 0.7rem;
-  height: 0.7rem;
-  position: absolute;
-  right: 3rem;
-  top: 0.975rem;
-  cursor: pointer;
 }
 
 .header-main h1 {
