@@ -1,4 +1,5 @@
 import { abrirFormulario } from "./formularioCompra.js";
+import { titlePage } from "./titlePage.js";
 import { getProdutoUnique } from "./transacao.js";
 const dataElementoLoadingProduto = document.querySelector('[data-elemento-loading-produto]');
 const dataElementoLoading = document.querySelector('[data-elemento-loading]');
@@ -68,6 +69,7 @@ export async function getProduto() {
     let dados;
     if (!getParams)
         return;
+    titlePage(getParams);
     try {
         if (dataElementoLoading && dataElementoLoading instanceof HTMLDivElement) {
             dataElementoLoading.style.display = 'flex';
