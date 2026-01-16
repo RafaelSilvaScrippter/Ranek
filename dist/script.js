@@ -1,3 +1,4 @@
+import { fetchCep } from "./cep.js";
 import { getProduto, mostarDados } from "./fetch.js";
 import { postLogin } from "./fetchLogin.js";
 import { getTransacao } from "./getCompras.js";
@@ -10,6 +11,7 @@ import { updateUser } from "./updateDados.js";
 import { vendas } from "./vendas.js";
 protectRoute();
 Logout();
+fetchCep();
 getUsuario();
 updateUser();
 postProduto();

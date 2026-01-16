@@ -43,17 +43,17 @@
       <label for='senha'>Senha</label>
       <input type='password' name='senha' id='senha' />
       <label for='cep'>CEP</label>
-      <input type='number' name='cep' id='cep' />
+      <input data-change-input type='number' name='cep' id='cep' />
       <label for='rua'>Rua</label>
-      <input type='number' name='rua' id='rua' />
+      <input data-dados-cep="logradouro" type='text' name='rua' id='rua' />
       <label for='numero'>Número</label>
       <input type='number' name='numero' id='numero' />
       <label for='bairro'>Bairro</label>
-      <input type='text' name='bairro' id='bairro' />
+      <input data-dados-cep="bairro" type='text' name='bairro' id='bairro' />
       <label for='cidade'>Cidade</label>
-      <input type='text' name='cidade' id='cidade' />
+      <input data-dados-cep="localidade" type='text' name='cidade' id='cidade' />
       <label for='estado'>Estado</label>
-      <input type='text' name='estado' id='estado' />
+      <input data-dados-cep="estado" type='text' name='estado' id='estado' />
       <button data-role="criar" data-btn-criar data-enviar class='btn-principal btn-login'>Criar Usúario</button>
     </form>
   </main>
